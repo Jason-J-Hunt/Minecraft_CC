@@ -126,8 +126,12 @@ function scanArea(scanner, radius)
             local tags = data.tags
 
             if data.name and data.x and data.y and data.z and data.tags then
+                closestTags = ""
+                    for k, v in pairs(data.tags) do
+                        closestTags = closestTags .. "Key: "  .. k .. "Value: " .. v[1] .. "\n"
+                    end
                 -- Add display string
-                table.insert(displayStrings, name:match("([^:]+)$") .. ": Tags: " .. tostring(tags))
+                table.insert(displayStrings, name:match("([^:]+)$") .. ": Tags: " .. closestTags)
             end
         end
 
@@ -171,8 +175,6 @@ function scanNearestBlock(scanner, radius)
         -- Report error
         print("An error occured: " .. scanError .. "\n")
     else
-        -- Loop through the scanner data
-        local noOreFound = true
         for i, data in ipairs(scannerData) do
             -- Check for fields
             if data.name and data.x and data.y and data.z and data.tags then
@@ -184,7 +186,11 @@ function scanNearestBlock(scanner, radius)
                 if newDist <= closestDist then
                     -- Update the closest data
                     closestName = data.name:match("([^:]+)$")
-                    closestTags = data.tags
+                    closestTags = ""
+                    for k, v in pairs(data.tags) do
+                        closestTags = closestTags .. "Key: "  .. k .. "Value: " .. v[1] .. "\n"
+                    end
+                    
                     break
                 end
             end
