@@ -217,7 +217,7 @@ function scanNearestBlock(scanner, radius)
 end
 
 function main()
-        -- Enter the main loop
+    -- Enter the main loop
     local continueOperation = true
     while continueOperation do
         -- Print the header
@@ -252,5 +252,6 @@ function main()
 end
 
 main()
+print("hello")
 
 end
