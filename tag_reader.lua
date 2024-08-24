@@ -93,6 +93,20 @@ function scrollData(data, pageSize, page)
     end
 end
 
+function dump(tbl)
+    local values = ""
+    for k, v in pairs(tbl) do
+        values = values .. "Key: " .. k .. "Values: "
+        if type(v) == "table" then
+            dump(v)
+        else
+            values = values .. v
+        end
+        values = values .. "\n"
+    end
+    return values
+end
+
 -- Scans the local area for ore and shows the results in a scrollable table.
 -- scanner: A Geo Scanner peripheral.
 -- radius: The radius to attempt to scan.
@@ -126,10 +140,7 @@ function scanArea(scanner, radius)
             local tags = data.tags
 
             if data.name and data.x and data.y and data.z and data.tags then
-                closestTags = ""
-                    for k, v in pairs(data.tags) do
-                        closestTags = closestTags .. "Key: "  .. k .. "Value: " .. v[1] .. "\n"
-                    end
+                closestTags = dump(data.tags)
                 -- Add display string
                 table.insert(displayStrings, name:match("([^:]+)$") .. ": Tags: " .. closestTags)
             end
@@ -186,11 +197,7 @@ function scanNearestBlock(scanner, radius)
                 if newDist <= closestDist then
                     -- Update the closest data
                     closestName = data.name:match("([^:]+)$")
-                    closestTags = ""
-                    for k, v in pairs(data.tags) do
-                        closestTags = closestTags .. "Key: "  .. k .. "Value: " .. v[1] .. "\n"
-                    end
-                    
+                    closestTags = dump(data.tags)
                     break
                 end
             end
