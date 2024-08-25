@@ -405,56 +405,56 @@ function scanRadar(scanner)
 end
 
 -- MARK: Execution
+function mainFunction()
+    -- Link with the scanner
+    local scanner = peripheral.find("geoScanner")
+    -- Enter the main loop
+    local continueOperation = true
+    while continueOperation do
+        -- Print the header
+        printHeader(scanner)
 
--- Link with the scanner
-local scanner = peripheral.find("geoScanner")
+        -- Print the instructions
+        print("Actions:")
+        print("[s] View Nearby Ores")
+        print("[w] Scan Nearest Ore")
+        print("[r] Start Radar")
 
--- Enter the main loop
-local continueOperation = true
-while continueOperation do
-    -- Print the header
-    printHeader(scanner)
+        print("\nSettings:")
+        print("[a] Decrease Scan Radius")
+        print("[d] Increase Scan Radius")
+        print("[x] Set Target Tag")
 
-    -- Print the instructions
-    print("Actions:")
-    print("[s] View Nearby Ores")
-    print("[w] Scan Nearest Ore")
-    print("[r] Start Radar")
+        print("\n[q] Quit")
 
-    print("\nSettings:")
-    print("[a] Decrease Scan Radius")
-    print("[d] Increase Scan Radius")
-    print("[x] Set Target Tag")
+        -- Wait for a key press
+        local event, key = os.pullEvent("key")
 
-    print("\n[q] Quit")
-
-    -- Wait for a key press
-    local event, key = os.pullEvent("key")
-
-    -- Check if the key is 'q'
-    if key == keys.q then
-        -- Exit
-        continueOperation = false
-    elseif key == keys.s then
-        -- Scan for all ores in the area
-        scanArea(scanner, SCAN_RADIUS)
-    elseif key == keys.w then
-        -- Scan for the nearest ore
-        scanForNearestOre(scanner, SCAN_RADIUS)
-    elseif key == keys.a then
-        -- Decrease the scan radius
-        SCAN_RADIUS = math.max(1, SCAN_RADIUS - 1)
-    elseif key == keys.d then
-        -- Increase the scan radius
-        SCAN_RADIUS = SCAN_RADIUS + 1
-    elseif key == keys.r then
-        -- Scan the radar
-        scanRadar(scanner)
-    elseif key == keys.x then
-        -- Set a new target tag
-        term.clear()
-        term.setCursorPos(1, 1)
-        print("Change Target Tag \"" .. BLOCK_TARGET_TAG .. "\" to:")
-        BLOCK_TARGET_TAG = read()
+        -- Check if the key is 'q'
+        if key == keys.q then
+            -- Exit
+            continueOperation = false
+        elseif key == keys.s then
+            -- Scan for all ores in the area
+            scanArea(scanner, SCAN_RADIUS)
+        elseif key == keys.w then
+            -- Scan for the nearest ore
+            scanForNearestOre(scanner, SCAN_RADIUS)
+        elseif key == keys.a then
+            -- Decrease the scan radius
+            SCAN_RADIUS = math.max(1, SCAN_RADIUS - 1)
+        elseif key == keys.d then
+            -- Increase the scan radius
+            SCAN_RADIUS = SCAN_RADIUS + 1
+        elseif key == keys.r then
+            -- Scan the radar
+            scanRadar(scanner)
+        elseif key == keys.x then
+            -- Set a new target tag
+            term.clear()
+            term.setCursorPos(1, 1)
+            print("Change Target Tag \"" .. BLOCK_TARGET_TAG .. "\" to:")
+            BLOCK_TARGET_TAG = read()
+        end
     end
 end
