@@ -31,8 +31,8 @@ function main()
             print('Scan Area')
         elseif key == keys.w then
             -- Scan for the nearest ore
-           --[[  scanNearestBlock(scanner, SCAN_RADIUS) ]]
-           print('Scan closest')
+            --[[  scanNearestBlock(scanner, SCAN_RADIUS) ]]
+            print('Scan closest')
         end
     end
 end
