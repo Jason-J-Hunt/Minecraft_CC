@@ -69,7 +69,7 @@ function calc3dDistance(x1, y1, z1, x2, y2, z2)
     local dx = x2 - x1
     local dy = y2 - y1
     local dz = z2 - z1
-    return math.sqrt(dx*dx + dy*dy + dz*dz)
+    return math.sqrt(dx * dx + dy * dy + dz * dz)
 end
 
 -- Calculates the distance between two points in 1D space.
@@ -164,7 +164,8 @@ function scanArea(scanner, radius)
                 -- Check if the tag matches
                 if stringInTable(BLOCK_TARGET_TAG, data.tags) then -- TODO: Order by distance
                     -- Add display string
-                    table.insert(displayStrings, data.name:match("([^:]+)$") .. " | (" .. data.x .. ", " .. data.y .. ", " .. data.z .. ")")
+                    table.insert(displayStrings,
+                        data.name:match("([^:]+)$") .. " | (" .. data.x .. ", " .. data.y .. ", " .. data.z .. ")")
                 end
             end
         end
