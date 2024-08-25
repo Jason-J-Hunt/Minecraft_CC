@@ -5,7 +5,7 @@ function main()
     local continueOperation = true
     while continueOperation do
         -- Print the header
-        printHeader(scanner)
+        -- printHeader(scanner)
 
         -- Print the instructions
         print("Actions:")
