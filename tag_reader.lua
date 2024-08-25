@@ -137,7 +137,7 @@ function scanArea(scanner, radius)
             local tags = data.tags
 
             if data.name and data.x and data.y and data.z and data.tags then
-                local closestTags = "Test"
+                local closestTags = dump(data.tags)
                 -- Add display string
                 table.insert(displayStrings, name:match("([^:]+)$") .. ": Tags: " .. closestTags)
             end
@@ -194,7 +194,7 @@ function scanNearestBlock(scanner, radius)
                 if newDist <= closestDist then
                     -- Update the closest data
                     closestName = data.name:match("([^:]+)$")
-                    closestTags = "Test"
+                    closestTags = dump(data.tags)
                     break
                 end
             end
