@@ -458,3 +458,5 @@ function mainFunction()
         end
     end
 end
+
+mainFunction()
