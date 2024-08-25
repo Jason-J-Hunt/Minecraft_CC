@@ -130,7 +130,7 @@ function scanArea(scanner, radius)
         local displayStrings = {}
         for i, data in ipairs(scannerData) do
             -- Check for fields
-            
+
             ---@type string
             local name = data.name
             ---@type table
@@ -158,7 +158,7 @@ function calc3dDistance(x1, y1, z1, x2, y2, z2)
     local dx = x2 - x1
     local dy = y2 - y1
     local dz = z2 - z1
-    return math.sqrt(dx*dx + dy*dy + dz*dz)
+    return math.sqrt(dx * dx + dy * dy + dz * dz)
 end
 
 -- Fetches data of the nearest block
@@ -209,12 +209,11 @@ function scanNearestBlock(scanner, radius)
     local event, key = os.pullEvent("key")
 
     if key == keys.q then
-        main()
+        mainEntryPoint()
     end
-
 end
 
-function main()
+function mainEntryPoint()
     -- Link with the scanner
     local scanner = peripheral.find("geoScanner")
     -- Enter the main loop
@@ -251,4 +250,4 @@ function main()
     end
 end
 
-main()
+mainEntryPoint()
