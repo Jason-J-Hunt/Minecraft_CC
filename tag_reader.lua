@@ -250,7 +250,7 @@ function main()
     end
 end
 
-
+main()
 print("hello")
 
 
